@@ -1,0 +1,6 @@
+{
+  "name": "Virtuan Consertos",
+  "description": "Landing page premium e de alta conversão para conserto, manutenção e venda de veículos elétricos (motos, patinetes, e-bikes).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
