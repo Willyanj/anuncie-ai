@@ -11,16 +11,13 @@ export default function Footer() {
   };
 
   const coverageAreas = [
-    'Terra Boa, PR',
-    'Cruzeiro do Oeste, PR',
+    'Maringá, PR',
+    'Paiçandu, PR',
+    'Ivatuba, PR',
+    'Dr. Camargo, PR',
     'Jussara, PR',
-    'Umuarama, PR',
-    'Francisco Alves, PR',
-    'Doutor Camargo, PR',
-    'Cianorte, PR',
-    'Guaíra, PR',
-    'Iporã, PR',
-    'Palotina, PR'
+    'Terra Boa, PR',
+    'Cianorte, PR'
   ];
 
   return (

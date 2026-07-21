@@ -20,7 +20,7 @@ export default function Hero({ onOpenBudget }: HeroProps) {
     {
       id: 'moto-eletrica',
       title: 'MOTO ELÉTRICA',
-      img: 'https://i.postimg.cc/nrBW2rWj/Chat-GPT-Image-20-de-jul-de-2026-14-20-30-(1).png',
+      img: 'https://i.postimg.cc/3R4qKv66/Whats-App-Image-2026-07-20-at-21-14-54.jpg',
       description: 'Manutenção de motor de cubo/central, baterias e freios de motos elétricas.',
     },
     {
@@ -114,7 +114,7 @@ export default function Hero({ onOpenBudget }: HeroProps) {
               <img
                 src={logoUrl}
                 alt="Virtuan Consertos"
-                className="h-32 sm:h-36 md:h-40 w-auto object-contain drop-shadow-[0_0_25px_rgba(234,179,8,0.5)] group-hover:scale-105 transition-all duration-300"
+                className="h-64 sm:h-80 md:h-96 lg:h-[400px] xl:h-[440px] w-auto object-contain drop-shadow-[0_0_40px_rgba(234,179,8,0.65)] group-hover:scale-105 transition-all duration-300"
                 referrerPolicy="no-referrer"
               />
             </motion.div>
@@ -177,7 +177,7 @@ export default function Hero({ onOpenBudget }: HeroProps) {
               
               <div className="relative rounded-2xl overflow-hidden border-2 border-yellow-400/50 bg-slate-950 shadow-[0_0_30px_rgba(234,179,8,0.25)]">
                 <img
-                  src="https://i.postimg.cc/J7Ph8hdw/5EDCEF8A-039D-4BD2-B1EF-6F303E839E32.jpg"
+                  src="https://i.postimg.cc/W3Fy2kKC/Whats-App-Image-2026-07-20-at-21-16-33.jpg"
                   alt="Virtuan Oficina e Serviços de Alta Tecnologia"
                   className="w-full h-auto object-cover transition-all duration-500 group-hover:scale-102"
                   referrerPolicy="no-referrer"
