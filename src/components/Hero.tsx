@@ -20,25 +20,25 @@ export default function Hero({ onOpenBudget }: HeroProps) {
     {
       id: 'moto-eletrica',
       title: 'MOTO ELÉTRICA',
-      img: 'https://i.postimg.cc/3R4qKv66/Whats-App-Image-2026-07-20-at-21-14-54.jpg',
+      img: 'https://i.postimg.cc/c15DWZQ7/oi.png',
       description: 'Manutenção de motor de cubo/central, baterias e freios de motos elétricas.',
     },
     {
       id: 'patinete-eletrico',
       title: 'PATINETE ELÉTRICO',
-      img: 'https://i.postimg.cc/ZKJH2wBQ/Chat-GPT-Image-20-de-jul-de-2026-14-22-36-(1).png',
+      img: 'https://i.postimg.cc/NjNvqZfN/Chat-GPT-Image-21-de-jul-de-2026-09-16-08.png',
       description: 'Troca de pneus, pastilhas de freio, baterias e reparos de placas.',
     },
     {
       id: 'triciclo-eletrico',
       title: 'TRICICLO ELÉTRICO',
-      img: 'https://i.postimg.cc/DymJSGtg/Chat-GPT-Image-20-de-jul-de-2026-14-24-38.png',
+      img: 'https://i.postimg.cc/X7zkR86P/Chat-GPT-Image-21-de-jul-de-2026-09-20-08.png',
       description: 'Revisão de diferencial, tração, sistema de ré e baterias chumbo/lítio.',
     },
     {
       id: 'hoverboard',
       title: 'HOVERBOARD',
-      img: 'https://i.postimg.cc/zfNGFHPH/Chat-GPT-Image-20-de-jul-de-2026-14-26-07.png',
+      img: 'https://i.postimg.cc/05CtBDQs/Chat-GPT-Image-21-de-jul-de-2026-09-18-28.png',
       description: 'Troca de sensores de giroscópio, placa lógica, carcaça e células.',
     },
   ];
@@ -204,11 +204,11 @@ export default function Hero({ onOpenBudget }: HeroProps) {
               className="group relative bg-slate-900/90 rounded-2xl border-2 border-slate-800/80 hover:border-yellow-500/80 overflow-hidden shadow-lg hover:shadow-[0_0_25px_rgba(234,179,8,0.25)] transition-all duration-300 cursor-pointer flex flex-col justify-between"
             >
               {/* Product Image Frame with clean light-grey/white studio feel from flyer */}
-              <div className="relative aspect-[4/3] bg-gradient-to-b from-white to-gray-100 overflow-hidden flex items-center justify-center p-3">
+              <div className="relative aspect-[4/5] bg-gradient-to-b from-white to-gray-100 overflow-hidden flex items-center justify-center">
                 <img
                   src={cat.img}
                   alt={cat.title}
-                  className="w-full h-full object-contain transition-all duration-500 ease-out group-hover:scale-115 group-hover:-rotate-2 group-hover:drop-shadow-[0_12px_20px_rgba(37,99,235,0.3)]"
+                  className="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:drop-shadow-[0_12px_20px_rgba(234,179,8,0.35)]"
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
