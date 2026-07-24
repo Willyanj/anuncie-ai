@@ -11,20 +11,23 @@ export const getWhatsAppLink = (message?: string) => {
 export const trackWhatsAppConversion = (linkUrl?: string) => {
   if (typeof window !== 'undefined') {
     const win = window as any;
-    // Push event to GTM dataLayer
+    const url = linkUrl || WHATSAPP_LINK_BASE;
+
+    // 1. Push event to GTM dataLayer (usable with Custom Event trigger 'whatsapp_click' in GTM)
     win.dataLayer = win.dataLayer || [];
     win.dataLayer.push({
       event: 'whatsapp_click',
       event_category: 'Engagement',
       event_label: 'Botão WhatsApp',
-      click_url: linkUrl || WHATSAPP_LINK_BASE
+      click_url: url,
+      'gtm.elementUrl': url
     });
 
-    // Also trigger Google Ads conversion directly if gtag is present
+    // 2. Direct Google Ads Conversion tracking with Conversion ID + Label
     if (typeof win.gtag === 'function') {
       try {
         win.gtag('event', 'conversion', {
-          'send_to': 'AW-18312189916'
+          'send_to': 'AW-18312189916/NehKCKzEyNUCENyv95tE'
         });
       } catch (err) {
         console.error('gtag conversion error', err);
