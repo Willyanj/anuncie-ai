@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Wrench, Cpu, ShieldCheck, Gauge, Home } from 'lucide-react';
-import { getWhatsAppLink } from '../data';
+import { getWhatsAppLink, trackWhatsAppConversion } from '../data';
 import WhatsAppIcon from './WhatsAppIcon';
 
 const logoUrl = 'https://i.postimg.cc/52R3RvCR/Chat-GPT-Image-20-de-jul-de-2026-16-06-12.png';
@@ -11,10 +11,7 @@ interface HeroProps {
 }
 
 export default function Hero({ onOpenBudget }: HeroProps) {
-  const handleWhatsAppContact = () => {
-    const link = getWhatsAppLink('Olá! Vi o folheto no seu site e gostaria de solicitar um orçamento para meu veículo elétrico com a assistência Virtuan.');
-    window.open(link, '_blank', 'noopener,noreferrer');
-  };
+  const heroWhatsappUrl = getWhatsAppLink('Olá! Vi o folheto no seu site e gostaria de solicitar um orçamento para meu veículo elétrico com a assistência Virtuan.');
 
   const categories = [
     {
@@ -270,12 +267,15 @@ export default function Hero({ onOpenBudget }: HeroProps) {
         </div>
 
         {/* FLYER BOTTOM CALL TO ACTION WHATSAPP BANNER */}
-        <motion.div
+        <motion.a
+          href={heroWhatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.7 }}
-          onClick={handleWhatsAppContact}
-          className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-green-600 p-5 md:p-6 shadow-[0_10px_30px_rgba(37,211,102,0.3)] hover:shadow-[0_15px_40px_rgba(37,211,102,0.5)] transition-all duration-300 cursor-pointer active:scale-99 flex flex-col md:flex-row items-center justify-between gap-4 border-2 border-emerald-400/30"
+          onClick={() => trackWhatsAppConversion(heroWhatsappUrl)}
+          className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-green-600 p-5 md:p-6 shadow-[0_10px_30px_rgba(37,211,102,0.3)] hover:shadow-[0_15px_40px_rgba(37,211,102,0.5)] transition-all duration-300 cursor-pointer active:scale-99 flex flex-col md:flex-row items-center justify-between gap-4 border-2 border-emerald-400/30 block"
         >
           {/* Pulsing neon backglow highlight */}
           <div className="absolute top-0 right-0 w-80 h-80 bg-white/5 rounded-full blur-2xl pointer-events-none" />
@@ -301,7 +301,7 @@ export default function Hero({ onOpenBudget }: HeroProps) {
             </span>
             Atendimento Imediato
           </div>
-        </motion.div>
+        </motion.a>
 
       </div>
     </section>

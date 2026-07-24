@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { getWhatsAppLink } from '../data';
+import { getWhatsAppLink, trackWhatsAppConversion } from '../data';
 import WhatsAppIcon from './WhatsAppIcon';
 
 const logoUrl = 'https://i.postimg.cc/52R3RvCR/Chat-GPT-Image-20-de-jul-de-2026-16-06-12.png';
@@ -26,10 +26,7 @@ export default function Header({ onOpenBudget }: HeaderProps) {
     { name: 'Serviços', href: '#servicos' },
   ];
 
-  const handleWhatsAppContact = () => {
-    const link = getWhatsAppLink('Olá! Acessei o site da Virtuan Consertos e gostaria de falar com um especialista sobre manutenção.');
-    window.open(link, '_blank', 'noopener,noreferrer');
-  };
+  const headerWhatsappUrl = getWhatsAppLink('Olá! Acessei o site da Virtuan Consertos e gostaria de falar com um especialista sobre manutenção.');
 
   return (
     <header
@@ -75,13 +72,16 @@ export default function Header({ onOpenBudget }: HeaderProps) {
               <WhatsAppIcon className="w-4 h-4" />
               Simular Orçamento
             </button>
-            <button
-              onClick={handleWhatsAppContact}
+            <a
+              href={headerWhatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackWhatsAppConversion(headerWhatsappUrl)}
               className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold border border-[#25D366]/40 bg-slate-900/60 hover:bg-slate-800 text-[#25D366] hover:text-white transition-all duration-200 cursor-pointer"
             >
               <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
               WhatsApp
-            </button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -130,16 +130,19 @@ export default function Header({ onOpenBudget }: HeaderProps) {
                   <WhatsAppIcon className="w-4 h-4" />
                   Orçamento
                 </button>
-                <button
+                <a
+                  href={headerWhatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => {
                     setIsOpen(false);
-                    handleWhatsAppContact();
+                    trackWhatsAppConversion(headerWhatsappUrl);
                   }}
                   className="w-full flex items-center justify-center gap-1.5 px-4 py-3 rounded-lg text-xs font-bold border border-[#25D366]/40 bg-slate-900 text-[#25D366] cursor-pointer"
                 >
                   <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
                   WhatsApp
-                </button>
+                </a>
               </div>
             </div>
           </motion.div>

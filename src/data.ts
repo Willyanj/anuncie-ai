@@ -1,11 +1,36 @@
 import { Service, Benefit, Differential, Step, Testimonial, GalleryItem, FAQItem } from './types';
 
 export const WHATSAPP_NUMBER = '5544988319357'; // Custom premium number for conversion (44) 98831-9357
-export const WHATSAPP_LINK_BASE = 'https://wa.me/5544988319357';
+export const WHATSAPP_LINK_BASE = 'https://api.whatsapp.com/send/?phone=5544988319357';
 
 export const getWhatsAppLink = (message?: string) => {
-  const targetMessage = "Olá! vim pelo  site e gostaria de falar com a assistência Virtuan para solicitar uma manutenção.";
-  return `${WHATSAPP_LINK_BASE}?text=${encodeURIComponent(targetMessage)}`;
+  const targetMessage = message || "Olá! Vim pelo site e gostaria de falar com a assistência Virtuan para solicitar uma manutenção.";
+  return `${WHATSAPP_LINK_BASE}&text=${encodeURIComponent(targetMessage)}`;
+};
+
+export const trackWhatsAppConversion = (linkUrl?: string) => {
+  if (typeof window !== 'undefined') {
+    const win = window as any;
+    // Push event to GTM dataLayer
+    win.dataLayer = win.dataLayer || [];
+    win.dataLayer.push({
+      event: 'whatsapp_click',
+      event_category: 'Engagement',
+      event_label: 'Botão WhatsApp',
+      click_url: linkUrl || WHATSAPP_LINK_BASE
+    });
+
+    // Also trigger Google Ads conversion directly if gtag is present
+    if (typeof win.gtag === 'function') {
+      try {
+        win.gtag('event', 'conversion', {
+          'send_to': 'AW-18312189916'
+        });
+      } catch (err) {
+        console.error('gtag conversion error', err);
+      }
+    }
+  }
 };
 
 export const SERVICES: Service[] = [

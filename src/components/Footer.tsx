@@ -1,14 +1,11 @@
 import { Phone, Mail, MapPin, Instagram, Facebook, ShieldCheck } from 'lucide-react';
-import { getWhatsAppLink } from '../data';
+import { getWhatsAppLink, trackWhatsAppConversion } from '../data';
 import WhatsAppIcon from './WhatsAppIcon';
 
 const logoUrl = 'https://i.postimg.cc/52R3RvCR/Chat-GPT-Image-20-de-jul-de-2026-16-06-12.png';
 
 export default function Footer() {
-  const handleWhatsAppClick = () => {
-    const link = getWhatsAppLink('Olá! Gostaria de falar com a assistência Virtuan para solicitar uma manutenção do meu veículo elétrico.');
-    window.open(link, '_blank', 'noopener,noreferrer');
-  };
+  const footerWhatsappUrl = getWhatsAppLink('Olá! Gostaria de falar com a assistência Virtuan para solicitar uma manutenção do meu veículo elétrico.');
 
   const coverageAreas = [
     'Maringá, PR',
@@ -97,9 +94,15 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <WhatsAppIcon className="w-5 h-5 text-[#25D366] shrink-0" />
-                <button onClick={handleWhatsAppClick} className="hover:text-white text-left font-bold text-[#25D366] transition-colors">
+                <a
+                  href={footerWhatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackWhatsAppConversion(footerWhatsappUrl)}
+                  className="hover:text-white text-left font-bold text-[#25D366] transition-colors"
+                >
                   Falar no WhatsApp
-                </button>
+                </a>
               </li>
               <li className="flex items-center gap-3">
                 <Instagram className="w-5 h-5 text-pink-500 shrink-0" />

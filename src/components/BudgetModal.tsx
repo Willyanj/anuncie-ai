@@ -1,7 +1,7 @@
 import { useState, ChangeEvent, FormEvent } from 'react';
 import { X, ShieldCheck, Clock, Check, Cpu } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { getWhatsAppLink } from '../data';
+import { getWhatsAppLink, trackWhatsAppConversion } from '../data';
 import WhatsAppIcon from './WhatsAppIcon';
 
 interface BudgetModalProps {
@@ -105,7 +105,7 @@ export default function BudgetModal({ isOpen, onClose, preselectedServiceId }: B
     setStep(2);
   };
 
-  const handleSendWhatsApp = () => {
+  const getModalWhatsAppLink = () => {
     const diag = getPreDiagnosis();
     const message = `Olá Virtuan! Acabei de fazer a triagem inteligente no site e gostaria de um orçamento detalhado:
 
@@ -125,9 +125,7 @@ export default function BudgetModal({ isOpen, onClose, preselectedServiceId }: B
 - Plano: ${diag.title}
 - Estimativa: ${diag.duration}`;
 
-    const link = getWhatsAppLink(message);
-    window.open(link, '_blank', 'noopener,noreferrer');
-    onClose();
+    return getWhatsAppLink(message);
   };
 
   if (!isOpen) return null;
@@ -359,13 +357,20 @@ export default function BudgetModal({ isOpen, onClose, preselectedServiceId }: B
                   >
                     Voltar / Editar
                   </button>
-                  <button
-                    onClick={handleSendWhatsApp}
+                  <a
+                    href={getModalWhatsAppLink()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => {
+                      const link = getModalWhatsAppLink();
+                      trackWhatsAppConversion(link);
+                      onClose();
+                    }}
                     className="w-full sm:w-2/3 py-3 px-4 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold rounded-lg text-xs sm:text-sm transition-all flex items-center justify-center gap-2 cursor-pointer shadow-[0_4px_15px_rgba(37,211,102,0.3)]"
                   >
                     <WhatsAppIcon className="w-4.5 h-4.5" />
                     Falar com Técnico no WhatsApp
-                  </button>
+                  </a>
                 </div>
               </motion.div>
             )}
